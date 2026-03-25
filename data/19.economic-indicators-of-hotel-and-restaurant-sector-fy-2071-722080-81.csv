@@ -1,0 +1,71 @@
+Year,English_Year,Metric,Value
+2071/72,2014/15,Annual_Growth_Rate_at_constant_price_2058_59_percent,5.41
+2072/73,2015/16,Annual_Growth_Rate_at_constant_price_2058_59_percent,-7.98
+2073/74,2016/17,Annual_Growth_Rate_at_constant_price_2058_59_percent,13.39
+2074/75,2017/18,Annual_Growth_Rate_at_constant_price_2058_59_percent,12.21
+2075/76,2018/19,Annual_Growth_Rate_at_constant_price_2058_59_percent,9.92
+2076/77,2019/20,Annual_Growth_Rate_at_constant_price_2058_59_percent,-36.78
+2077/78,2020/21,Annual_Growth_Rate_at_constant_price_2058_59_percent,10.73
+2078/79 R,2021/22,Annual_Growth_Rate_at_constant_price_2058_59_percent,12.56
+2079/80 R,2022/23,Annual_Growth_Rate_at_constant_price_2058_59_percent,18.03
+2080/81 P,2023/24,Annual_Growth_Rate_at_constant_price_2058_59_percent,21.84
+2071/72,2014/15,Gross_Output_at_current_price_Rs_millions,152336
+2072/73,2015/16,Gross_Output_at_current_price_Rs_millions,183800
+2073/74,2016/17,Gross_Output_at_current_price_Rs_millions,238040
+2074/75,2017/18,Gross_Output_at_current_price_Rs_millions,260255
+2075/76,2018/19,Gross_Output_at_current_price_Rs_millions,278733
+2076/77,2019/20,Gross_Output_at_current_price_Rs_millions,197921
+2077/78,2020/21,Gross_Output_at_current_price_Rs_millions,214199
+2078/79 R,2021/22,Gross_Output_at_current_price_Rs_millions,236245
+2079/80 R,2022/23,Gross_Output_at_current_price_Rs_millions,312716
+2080/81 P,2023/24,Gross_Output_at_current_price_Rs_millions,402843
+2071/72,2014/15,Intermediate_Consumption_at_current_price_Rs_millions,106429
+2072/73,2015/16,Intermediate_Consumption_at_current_price_Rs_millions,137524
+2073/74,2016/17,Intermediate_Consumption_at_current_price_Rs_millions,181891
+2074/75,2017/18,Intermediate_Consumption_at_current_price_Rs_millions,192940
+2075/76,2018/19,Intermediate_Consumption_at_current_price_Rs_millions,203083
+2076/77,2019/20,Intermediate_Consumption_at_current_price_Rs_millions,147489
+2077/78,2020/21,Intermediate_Consumption_at_current_price_Rs_millions,155420
+2078/79 R,2021/22,Intermediate_Consumption_at_current_price_Rs_millions,168015
+2079/80 R,2022/23,Intermediate_Consumption_at_current_price_Rs_millions,220034
+2080/81 P,2023/24,Intermediate_Consumption_at_current_price_Rs_millions,280517
+2071/72,2014/15,Gross_Value_Added_at_current_price_Rs_millions,45907
+2072/73,2015/16,Gross_Value_Added_at_current_price_Rs_millions,46276
+2073/74,2016/17,Gross_Value_Added_at_current_price_Rs_millions,56149
+2074/75,2017/18,Gross_Value_Added_at_current_price_Rs_millions,67315
+2075/76,2018/19,Gross_Value_Added_at_current_price_Rs_millions,75650
+2076/77,2019/20,Gross_Value_Added_at_current_price_Rs_millions,50433
+2077/78,2020/21,Gross_Value_Added_at_current_price_Rs_millions,58779
+2078/79 R,2021/22,Gross_Value_Added_at_current_price_Rs_millions,68230
+2079/80 R,2022/23,Gross_Value_Added_at_current_price_Rs_millions,92682
+2080/81 P,2023/24,Gross_Value_Added_at_current_price_Rs_millions,122326
+2071/72,2014/15,Gross_Value_Added_at_constant_price_Rs_millions,29799
+2072/73,2015/16,Gross_Value_Added_at_constant_price_Rs_millions,27420
+2073/74,2016/17,Gross_Value_Added_at_constant_price_Rs_millions,31092
+2074/75,2017/18,Gross_Value_Added_at_constant_price_Rs_millions,34887
+2075/76,2018/19,Gross_Value_Added_at_constant_price_Rs_millions,38348
+2076/77,2019/20,Gross_Value_Added_at_constant_price_Rs_millions,24245
+2077/78,2020/21,Gross_Value_Added_at_constant_price_Rs_millions,26847
+2078/79 R,2021/22,Gross_Value_Added_at_constant_price_Rs_millions,30220
+2079/80 R,2022/23,Gross_Value_Added_at_constant_price_Rs_millions,35668
+2080/81 P,2023/24,Gross_Value_Added_at_constant_price_Rs_millions,43499
+2071/72,2014/15,Proportion_of_GDP_at_current_price_percent,2.1
+2072/73,2015/16,Proportion_of_GDP_at_current_price_percent,1.98
+2073/74,2016/17,Proportion_of_GDP_at_current_price_percent,2.06
+2074/75,2017/18,Proportion_of_GDP_at_current_price_percent,2.24
+2075/76,2018/19,Proportion_of_GDP_at_current_price_percent,2.26
+2076/77,2019/20,Proportion_of_GDP_at_current_price_percent,1.47
+2077/78,2020/21,Proportion_of_GDP_at_current_price_percent,1.58
+2078/79 R,2021/22,Proportion_of_GDP_at_current_price_percent,1.72
+2079/80 R,2022/23,Proportion_of_GDP_at_current_price_percent,1.96
+2080/81 P,2023/24,Proportion_of_GDP_at_current_price_percent,2.42
+2071/72,2014/15,GDP_Deflator,154.06
+2072/73,2015/16,GDP_Deflator,168.77
+2073/74,2016/17,GDP_Deflator,180.59
+2074/75,2017/18,GDP_Deflator,192.95
+2075/76,2018/19,GDP_Deflator,197.27
+2076/77,2019/20,GDP_Deflator,208.01
+2077/78,2020/21,GDP_Deflator,218.94
+2078/79 R,2021/22,GDP_Deflator,225.78
+2079/80 R,2022/23,GDP_Deflator,259.84
+2080/81 P,2023/24,GDP_Deflator,281.47

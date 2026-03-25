@@ -1,0 +1,217 @@
+Year,Region,Value
+2001,Mustang,922
+2001,Lower Dolpa,488
+2001,Upper Dolpa,119
+2001,Humla,337
+2001,Manaslu,798
+2001,Kanchanjunga,690
+2001,T.Valley,-
+2001,Narphu,-
+2001,Others,-
+2002,Mustang,536
+2002,Lower Dolpa,0
+2002,Upper Dolpa,119
+2002,Humla,339
+2002,Manaslu,428
+2002,Kanchanjunga,478
+2002,T.Valley,-
+2002,Narphu,-
+2002,Others,79
+2003,Mustang,572
+2003,Lower Dolpa,0
+2003,Upper Dolpa,369
+2003,Humla,223
+2003,Manaslu,645
+2003,Kanchanjunga,402
+2003,T.Valley,-
+2003,Narphu,-
+2003,Others,154
+2004,Mustang,825
+2004,Lower Dolpa,329
+2004,Upper Dolpa,77
+2004,Humla,577
+2004,Manaslu,682
+2004,Kanchanjunga,458
+2004,T.Valley,-
+2004,Narphu,-
+2004,Others,275
+2005,Mustang,661
+2005,Lower Dolpa,200
+2005,Upper Dolpa,81
+2005,Humla,782
+2005,Manaslu,544
+2005,Kanchanjunga,167
+2005,T.Valley,-
+2005,Narphu,-
+2005,Others,279
+2006,Mustang,248
+2006,Lower Dolpa,225
+2006,Upper Dolpa,92
+2006,Humla,"1,256"
+2006,Manaslu,561
+2006,Kanchanjunga,335
+2006,T.Valley,-
+2006,Narphu,-
+2006,Others,395
+2007,Mustang,"1,282"
+2007,Lower Dolpa,419
+2007,Upper Dolpa,198
+2007,Humla,"1,542"
+2007,Manaslu,895
+2007,Kanchanjunga,404
+2007,T.Valley,-
+2007,Narphu,-
+2007,Others,587
+2008,Mustang,838
+2008,Lower Dolpa,709
+2008,Upper Dolpa,383
+2008,Humla,"1,065"
+2008,Manaslu,"1,443"
+2008,Kanchanjunga,"1,490"
+2008,T.Valley,-
+2008,Narphu,-
+2008,Others,520
+2009,Mustang,"1,659"
+2009,Lower Dolpa,739
+2009,Upper Dolpa,313
+2009,Humla,"1,177"
+2009,Manaslu,"1,635"
+2009,Kanchanjunga,508
+2009,T.Valley,-
+2009,Narphu,-
+2009,Others,948
+2010,Mustang,"2,162"
+2010,Lower Dolpa,785
+2010,Upper Dolpa,358
+2010,Humla,"1,633"
+2010,Manaslu,"2,162"
+2010,Kanchanjunga,488
+2010,T.Valley,-
+2010,Narphu,-
+2010,Others,"1,427"
+2011,Mustang,"2,950"
+2011,Lower Dolpa,808
+2011,Upper Dolpa,397
+2011,Humla,"1,758"
+2011,Manaslu,"2,813"
+2011,Kanchanjunga,591
+2011,T.Valley,-
+2011,Narphu,-
+2011,Others,"1,398"
+2012,Mustang,"2,965"
+2012,Lower Dolpa,982
+2012,Upper Dolpa,536
+2012,Humla,"1,508"
+2012,Manaslu,"3,319"
+2012,Kanchanjunga,635
+2012,T.Valley,780
+2012,Narphu,515
+2012,Others,392
+2013,Mustang,"2,862"
+2013,Lower Dolpa,585
+2013,Upper Dolpa,338
+2013,Humla,"1,603"
+2013,Manaslu,"4,439"
+2013,Kanchanjunga,837
+2013,T.Valley,"1,179"
+2013,Narphu,862
+2013,Others,232
+2014,Mustang,"3,883"
+2014,Lower Dolpa,"1,117"
+2014,Upper Dolpa,469
+2014,Humla,492
+2014,Manaslu,"3,764"
+2014,Kanchanjunga,777
+2014,T.Valley,"1,454"
+2014,Narphu,776
+2014,Others,"2,333"
+2015,Mustang,"2,673"
+2015,Lower Dolpa,788
+2015,Upper Dolpa,328
+2015,Humla,"1,346"
+2015,Manaslu,"2,134"
+2015,Kanchanjunga,731
+2015,T.Valley,636
+2015,Narphu,770
+2015,Others,273
+2016,Mustang,"3,984"
+2016,Lower Dolpa,"1,023"
+2016,Upper Dolpa,531
+2016,Humla,"10,105"
+2016,Manaslu,"4,650"
+2016,Kanchanjunga,502
+2016,T.Valley,"1,219"
+2016,Narphu,903
+2016,Others,356
+2017,Mustang,"4,240"
+2017,Lower Dolpa,924
+2017,Upper Dolpa,425
+2017,Humla,"13,398"
+2017,Manaslu,"6,632"
+2017,Kanchanjunga,479
+2017,T.Valley,"1,681"
+2017,Narphu,"1,115"
+2017,Others,"1,099"
+2018,Mustang,"4,116"
+2018,Lower Dolpa,"1,222"
+2018,Upper Dolpa,525
+2018,Humla,"10,814"
+2018,Manaslu,"7,371"
+2018,Kanchanjunga,970
+2018,T.Valley,"2,030"
+2018,Narphu,"1,291"
+2018,Others,537
+2019,Mustang,"3,739"
+2019,Lower Dolpa,"1,263"
+2019,Upper Dolpa,"1,530"
+2019,Humla,"8,670"
+2019,Manaslu,"6,070"
+2019,Kanchanjunga,911
+2019,T.Valley,"1,393"
+2019,Narphu,"1,066"
+2019,Others,437
+2020,Mustang,62
+2020,Lower Dolpa,12
+2020,Upper Dolpa,1
+2020,Humla,22
+2020,Manaslu,360
+2020,Kanchanjunga,55
+2020,T.Valley,138
+2020,Narphu,17
+2020,Others,25
+2021,Mustang,362
+2021,Lower Dolpa,168
+2021,Upper Dolpa,75
+2021,Humla,148
+2021,Manaslu,908
+2021,Kanchanjunga,137
+2021,T.Valley,152
+2021,Narphu,259
+2021,Others,117
+2022,Mustang,"3,387"
+2022,Lower Dolpa,786
+2022,Upper Dolpa,492
+2022,Humla,"1,442"
+2022,Manaslu,"5,890"
+2022,Kanchanjunga,858
+2022,T.Valley,"1,279"
+2022,Narphu,"1,194"
+2022,Others,453
+2023,Mustang,"1,198"
+2023,Lower Dolpa,365
+2023,Upper Dolpa,145
+2023,Humla,178
+2023,Manaslu,"3,094"
+2023,Kanchanjunga,405
+2023,T.Valley,753
+2023,Narphu,512
+2023,Others,204
+2024,Mustang,"5,614"
+2024,Lower Dolpa,"1,348"
+2024,Upper Dolpa,657
+2024,Humla,"1,045"
+2024,Manaslu,"12,810"
+2024,Kanchanjunga,"1,902"
+2024,T.Valley,"2,567"
+2024,Narphu,"1,925"
+2024,Others,"1,026"
