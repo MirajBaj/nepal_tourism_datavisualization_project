@@ -616,3 +616,116 @@ def build_project(data_dir: str | Path = DEFAULT_DATA_DIR) -> Tuple[Dict[str, pd
     tables = prepare_master_tables(raw)
     kpis = calculate_kpis(tables["master_yearly"])
     return raw, tables, kpis
+
+
+def normalize_country(name):
+    if pd.isna(name):
+        return None
+    mapping = {
+        "u.s.a.": "United States", "usa": "United States", "u s a": "United States", "united states of america": "United States", "u.s.a": "United States",
+        "u.k.": "United Kingdom", "uk": "United Kingdom", "u k": "United Kingdom", "united kingdom of great britain": "United Kingdom",
+        "china p.r.": "China", "china p r": "China", "china pr": "China", "china": "China",
+        "korea": "South Korea", "south korea": "South Korea", "north korea": "North Korea",
+        "russia": "Russian Federation", "czech republic": "Czechia", "viet nam": "Vietnam",
+        "brunei darussalam": "Brunei", "burma": "Myanmar", "others": None,
+    }
+    c = str(name).strip().lower()
+    c = re.sub(r"[^a-z0-9]+", " ", c).strip()
+    if c in mapping:
+        return mapping[c]
+
+    if c in {"korea", "republic of korea", "korea south", "south korea"}:
+        return "South Korea"
+    if c in {"north korea", "democratic people s republic of korea"}:
+        return "North Korea"
+    if c in {"united states", "united states of america", "us"}:
+        return "United States"
+    if c in {"united kingdom", "great britain", "britain", "uk"}:
+        return "United Kingdom"
+    if c in {"china p r", "china pr", "china"}:
+        return "China"
+
+    return str(name).strip()
+
+
+def prepare_revenue_map_data(nationality_yearly: pd.DataFrame, master_yearly: pd.DataFrame, year: int) -> pd.DataFrame:
+    nat = nationality_yearly[nationality_yearly["year"] == year].copy()
+    master = master_yearly[master_yearly["year"] == year]
+    if master.empty or nat.empty:
+        return pd.DataFrame()
+
+    total_arrivals = master["total_arrivals"].iloc[0]
+    total_revenue = master["fx_earnings_npr_million"].iloc[0]
+    nat["revenue_contribution"] = (nat["arrivals"] / total_arrivals) * total_revenue
+
+    nat["country"] = nat["nationality"].apply(normalize_country)
+    nat = nat.dropna(subset=["country"])
+    nat = nat[nat["country"].astype(str).str.strip() != ""]
+    nat = nat[~nat["country"].astype(str).str.lower().isin(["others", "total", "n/a", "unknown"])]
+
+    print("[Revenue map] rows=", len(nat))
+    print("[Revenue map] unique countries sample:", list(nat["country"].dropna().unique())[:20])
+
+    return nat
+
+
+def prepare_arrival_map_data(nationality_yearly: pd.DataFrame, year: int) -> pd.DataFrame:
+    nat = nationality_yearly[nationality_yearly["year"] == year].copy()
+    if nat.empty:
+        return pd.DataFrame()
+
+    nat["country"] = nat["nationality"].apply(normalize_country)
+    nat = nat.dropna(subset=["country"])
+    nat = nat[nat["country"].astype(str).str.strip() != ""]
+    nat = nat[~nat["country"].astype(str).str.lower().isin(["others", "total", "n/a", "unknown"])]
+
+    print("[Arrival map] rows=", len(nat))
+    print("[Arrival map] unique countries sample:", list(nat["country"].dropna().unique())[:20])
+
+    return nat
+
+
+def plot_revenue_contribution_choropleth(df: pd.DataFrame) -> go.Figure:
+    if df.empty:
+        fig = go.Figure()
+        fig.add_annotation(text="No data available", xref="paper", yref="paper", x=0.5, y=0.5, showarrow=False)
+        return fig
+
+    fig = px.choropleth(
+        df,
+        locations="country",
+        locationmode="country names",
+        color="revenue_contribution",
+        hover_name="country",
+        hover_data={"arrivals": True, "revenue_contribution": True},
+        color_continuous_scale="Viridis",
+        projection="natural earth",
+        title="Estimated Tourism Revenue Contribution by Country",
+        template="plotly_white",
+    )
+    fig.update_layout(title={"x": 0.5}, coloraxis_colorbar={"title": "Revenue (NPR mn)"})
+    fig.update_traces(hovertemplate="<b>%{location}</b><br>Arrivals: %{customdata[0]:,}<br>Revenue: %{customdata[1]:,.0f} NPR<extra></extra>")
+    return fig
+
+
+def plot_arrival_choropleth(df: pd.DataFrame) -> go.Figure:
+    if df.empty:
+        fig = go.Figure()
+        fig.add_annotation(text="No data available", xref="paper", yref="paper", x=0.5, y=0.5, showarrow=False)
+        return fig
+
+    fig = px.choropleth(
+        df,
+        locations="country",
+        locationmode="country names",
+        color="arrivals",
+        hover_name="country",
+        hover_data={"arrivals": True},
+        color_continuous_scale="Plasma",
+        projection="natural earth",
+        title="Tourist Arrivals by Country (Nationality)",
+        template="plotly_white",
+    )
+    fig.update_layout(title={"x": 0.5}, coloraxis_colorbar={"title": "Arrivals"})
+    fig.update_traces(hovertemplate="<b>%{location}</b><br>Arrivals: %{customdata[0]:,}<extra></extra>")
+    return fig

@@ -7,7 +7,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from utils import build_project
+from utils import (
+    build_project,
+    prepare_revenue_map_data,
+    plot_revenue_contribution_choropleth,
+    prepare_arrival_map_data,
+    plot_arrival_choropleth,
+)
 
 st.set_page_config(page_title="Nepal Tourism Decision Dashboard", layout="wide")
 
@@ -90,11 +96,12 @@ latest = master_f.sort_values("year").iloc[-1]
 prev = master_f.sort_values("year").iloc[-2] if len(master_f) > 1 else latest
 
 st.markdown("## Overview")
-k1, k2, k3, k4 = st.columns(4)
+k1, k2, k3, k4, k5 = st.columns(5)
 k1.metric("Latest Arrivals", f"{latest['total_arrivals']:,.0f}", delta=f"{latest['total_arrivals'] - prev['total_arrivals']:,.0f}")
 k2.metric("Avg Stay (days)", f"{latest['avg_stay_days']:.1f}" if pd.notna(latest["avg_stay_days"]) else "NA")
 k3.metric("Air Share %", f"{latest['air_share_pct']:.1f}%" if pd.notna(latest["air_share_pct"]) else "NA")
 k4.metric("Complaints / 100k", f"{latest['complaints_per_100k_arrivals']:.1f}" if pd.notna(latest["complaints_per_100k_arrivals"]) else "NA")
+k5.metric("Revenue per Tourist (NPR)", f"{latest['yield_per_arrival']:,.0f}" if pd.notna(latest["yield_per_arrival"]) else "NA")
 
 with st.container():
     c1, c2 = st.columns((1.5, 1))
@@ -213,6 +220,16 @@ with i2:
     )
     trend.update_layout(template="plotly_white", height=420)
     st.plotly_chart(trend, use_container_width=True)
+
+with st.container():
+    st.markdown("### Tourist Arrivals by Country (Nationality)")
+    map_year = selected_years[1]
+    map_data = prepare_arrival_map_data(nationality_yearly, map_year)
+    if not map_data.empty:
+        fig = plot_arrival_choropleth(map_data)
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("No data available for the selected year.")
 
 with st.container():
     st.markdown("### Religious Destination Demand")
