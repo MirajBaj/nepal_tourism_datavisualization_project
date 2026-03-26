@@ -473,7 +473,7 @@ def plot_scatter(df: pd.DataFrame, x: str, y: str, hue: str | None, title: str):
 
 def plot_boxplot(df: pd.DataFrame, x: str, y: str, title: str):
     fig, ax = plt.subplots(figsize=(11, 5))
-    sns.boxplot(data=df, x=x, y=y, ax=ax)
+    sns.boxplot(data=df, x=x, y=y, ax=ax, palette="tab10")
     ax.set_title(title)
     ax.tick_params(axis="x", rotation=45)
     plt.tight_layout()
