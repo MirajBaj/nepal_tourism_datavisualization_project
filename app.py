@@ -96,12 +96,13 @@ latest = master_f.sort_values("year").iloc[-1]
 prev = master_f.sort_values("year").iloc[-2] if len(master_f) > 1 else latest
 
 st.markdown("## Overview")
-k1, k2, k3, k4, k5 = st.columns(5)
+k1, k2, k3, k4, k5, k6 = st.columns(6)
 k1.metric("Latest Arrivals", f"{latest['total_arrivals']:,.0f}", delta=f"{latest['total_arrivals'] - prev['total_arrivals']:,.0f}")
-k2.metric("Avg Stay (days)", f"{latest['avg_stay_days']:.1f}" if pd.notna(latest["avg_stay_days"]) else "NA")
-k3.metric("Air Share %", f"{latest['air_share_pct']:.1f}%" if pd.notna(latest["air_share_pct"]) else "NA")
-k4.metric("Complaints / 100k", f"{latest['complaints_per_100k_arrivals']:.1f}" if pd.notna(latest["complaints_per_100k_arrivals"]) else "NA")
-k5.metric("Revenue per Tourist (NPR)", f"{latest['yield_per_arrival']:,.0f}" if pd.notna(latest["yield_per_arrival"]) else "NA")
+k2.metric("Total Revenue (NPR mn)", f"{latest['fx_earnings_npr_million']:,.0f}" if pd.notna(latest["fx_earnings_npr_million"]) else "NA", delta=f"{latest['fx_earnings_npr_million'] - prev['fx_earnings_npr_million']:,.0f}" if (pd.notna(latest["fx_earnings_npr_million"]) and pd.notna(prev["fx_earnings_npr_million"])) else None)
+k3.metric("Avg Stay (days)", f"{latest['avg_stay_days']:.1f}" if pd.notna(latest["avg_stay_days"]) else "NA")
+k4.metric("Air Share %", f"{latest['air_share_pct']:.1f}%" if pd.notna(latest["air_share_pct"]) else "NA")
+k5.metric("Complaints / 100k", f"{latest['complaints_per_100k_arrivals']:.1f}" if pd.notna(latest["complaints_per_100k_arrivals"]) else "NA")
+k6.metric("Revenue per Tourist (NPR)", f"{latest['yield_per_arrival']:,.0f}" if pd.notna(latest["yield_per_arrival"]) else "NA")
 
 with st.container():
     c1, c2 = st.columns((1.5, 1))
