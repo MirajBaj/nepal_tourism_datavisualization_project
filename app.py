@@ -224,16 +224,71 @@ st.markdown("## Analysis")
 a1, a2 = st.columns(2)
 
 with a1:
-    purpose_latest = purpose_f[purpose_f["year"] == purpose_f["year"].max()].sort_values("arrivals", ascending=False)
-    purpose_chart = px.bar(
-        purpose_latest,
-        x="visit_purpose",
-        y="arrivals",
-        color="purpose_share_pct",
-        title=f"Visit Purpose Mix ({int(purpose_latest['year'].max())})" if not purpose_latest.empty else "Visit Purpose Mix",
+    # For the pie chart we want the full purpose mix for the selected year range,
+    # independent of the sidebar "Visit Purposes" multi-select (which is used by other charts).
+    purpose_pie = purpose_yearly[
+        (purpose_yearly["year"] >= selected_years[0])
+        & (purpose_yearly["year"] <= selected_years[1])
+    ].copy()
+    used_year = int(purpose_pie["year"].max()) if not purpose_pie.empty else None
+    purpose_latest = (
+        purpose_pie[purpose_pie["year"] == used_year].copy() if used_year is not None else purpose_pie
     )
-    purpose_chart.update_layout(template="plotly_white", height=420, xaxis_title="")
-    st.plotly_chart(purpose_chart, use_container_width=True)
+
+    if not purpose_latest.empty:
+        # Merge "Conv./ Conf." into "Business" for a clearer composition.
+        purpose_latest["visit_purpose"] = purpose_latest["visit_purpose"].astype(str).str.strip()
+        purpose_latest["visit_purpose"] = np.where(
+            purpose_latest["visit_purpose"] == "Conv./ Conf.",
+            "Business",
+            purpose_latest["visit_purpose"],
+        )
+
+        # Re-sum arrivals after merging.
+        purpose_latest = (
+            purpose_latest.groupby("visit_purpose", as_index=False)["arrivals"].sum()
+        )
+        purpose_latest = purpose_latest[purpose_latest["arrivals"] > 0].copy()
+
+    # Top 5 purposes + Others, but ensure "Business" slice is always present (if available).
+    TOP_N = 5
+    if purpose_latest is not None and not purpose_latest.empty:
+        sorted_df = purpose_latest.sort_values("arrivals", ascending=False).copy()
+        business_row = sorted_df[sorted_df["visit_purpose"] == "Business"].copy()
+
+        if not business_row.empty:
+            top_others = sorted_df[sorted_df["visit_purpose"] != "Business"].head(TOP_N - 1).copy()
+            top = pd.concat([business_row, top_others], ignore_index=True)
+        else:
+            top = sorted_df.head(TOP_N).copy()
+
+        selected = set(top["visit_purpose"].astype(str).tolist())
+        remaining = sorted_df[~sorted_df["visit_purpose"].astype(str).isin(selected)]
+        others_sum = float(remaining["arrivals"].sum()) if not remaining.empty else 0.0
+
+        if others_sum > 0:
+            top = pd.concat(
+                [
+                    top,
+                    pd.DataFrame({"visit_purpose": ["Others"], "arrivals": [others_sum]}),
+                ],
+                ignore_index=True,
+            )
+
+        pie = px.pie(
+            top,
+            values="arrivals",
+            names="visit_purpose",
+            title=f"Purpose of Visit Mix (Full Pie) - {used_year}",
+        )
+        pie.update_traces(
+            textinfo="percent",
+            hovertemplate="<b>%{label}</b><br>Arrivals: %{value:,.0f}<br>Share: %{percent}",
+        )
+        pie.update_layout(template="plotly_white", height=420)
+        st.plotly_chart(pie, use_container_width=True)
+    else:
+        st.info("No purpose-of-visit data available for the current filters.")
 
 with a2:
     park_latest = parks_f[parks_f["year"] == parks_f["year"].max()].sort_values("foreign_visitors", ascending=False)
