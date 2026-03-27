@@ -54,13 +54,6 @@ with st.sidebar:
         default=default_markets if default_markets else available_markets[:5],
     )
 
-    available_purposes = sorted(purpose_yearly["visit_purpose"].dropna().unique().tolist())
-    selected_purposes = st.multiselect(
-        "Visit Purposes",
-        options=available_purposes,
-        default=available_purposes[:4],
-    )
-
     available_parks = sorted(parks_yearly["park_name"].dropna().unique().tolist())
     selected_parks = st.multiselect(
         "Protected Areas",
@@ -79,11 +72,6 @@ nationality_m_f = nationality_monthly[
     (nationality_monthly["year"] >= selected_years[0]) &
     (nationality_monthly["year"] <= selected_years[1]) &
     (nationality_monthly["nationality"].isin(selected_markets))
-].copy()
-purpose_f = purpose_yearly[
-    (purpose_yearly["year"] >= selected_years[0]) &
-    (purpose_yearly["year"] <= selected_years[1]) &
-    (purpose_yearly["visit_purpose"].isin(selected_purposes))
 ].copy()
 parks_f = parks_yearly[
     (parks_yearly["year"] >= selected_years[0]) &
