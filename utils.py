@@ -173,7 +173,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
         elif pd.api.types.is_numeric_dtype(out[col]):
             numeric_candidates.append(col)
 
-    # Keep raw values intact; outlier treatment is handled only in analysis-specific views.
+   
     return out
 
 
@@ -412,9 +412,9 @@ def calculate_kpis(master_yearly: pd.DataFrame) -> Dict[str, float]:
     }
 
 
-# =========================
-# Matplotlib / Seaborn EDA
-# =========================
+
+# EDA
+
 def plot_line_chart(df: pd.DataFrame, x: str, y: str, title: str, ylabel: str = "", xlabel: str = ""):
     from matplotlib.ticker import FuncFormatter
     fig, ax = plt.subplots(figsize=(11, 5))
@@ -489,9 +489,9 @@ def plot_heatmap(df: pd.DataFrame, columns: List[str], title: str):
     return fig
 
 
-# =========================
-# Plotly advanced visuals
-# =========================
+
+#Advanced visuals
+
 def plot_multilayer_arrivals_fx(master_yearly: pd.DataFrame) -> go.Figure:
     df = master_yearly[master_yearly["year"] >= 2000].sort_values("year").copy()
     fig = go.Figure()
