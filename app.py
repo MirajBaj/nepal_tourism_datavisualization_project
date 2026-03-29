@@ -37,7 +37,7 @@ parks_yearly = tables["parks_yearly"].copy()
 site_visitors = tables["site_visitors_monthly"].copy()
 
 st.title("Nepal Tourism Decision Dashboard")
-st.caption("SDG 8.9 focus: maximize sustainable tourism growth, yield, and resilience using 26 tourism datasets.")
+st.caption("SDG 8,12 focus: maximize sustainable tourism growth, yield, and resilience using 26 tourism datasets.")
 
 with st.sidebar:
     st.header("Filters")
